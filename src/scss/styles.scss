@@ -1,0 +1,19 @@
+:root {
+  --veryDarkBlue: hsl(200, 15%, 8%); //text
+  --darkGray: hsl(0, 0%, 52%); //input
+  --veryLightGray: hsl(0, 0%, 98%); //background
+  --white: hsl(0, 0%, 100%); //Dark Mode Text & Light Mode Elements
+}
+
+body {
+  font-family: "Nunito Sans", Helvetica, Arial, sans-serif;
+  background: var(--veryLightGray);
+  padding: 0;
+  margin: 0;
+}
+
+.wrapper {
+  max-width: 1312px;
+  margin: auto;
+  padding: 0px 1rem;
+}
