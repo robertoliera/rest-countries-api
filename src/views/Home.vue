@@ -14,23 +14,12 @@
       </div>
 
       <div class="grid">
-        <div
+        <CountryItem
           v-for="country in countries"
           :key="country.id"
-          @click="goToCountryPage(country.alpha2Code)"
-          class="grid__item"
+          :country="country"
         >
-          <div class="grid__image">
-            <img :src="country.flag" :alt="country.name" />
-          </div>
-          <div class="grid__content">
-            <h3>{{ country.name }}</h3>
-
-            <p><span>Population:</span> {{ country.population | amount }}</p>
-            <p><span>Region:</span> {{ country.region }}</p>
-            <p><span>Capital:</span> {{ country.capital }}</p>
-          </div>
-        </div>
+        </CountryItem>
       </div>
     </div>
   </div>
@@ -40,12 +29,14 @@
 import HeaderBar from "@/components/HeaderBar";
 import InputSearch from "@/components/InputSearch";
 import SelectRegion from "@/components/SelectRegion";
+import CountryItem from "@/components/CountryItem";
 export default {
   name: "Home",
   components: {
     HeaderBar,
     InputSearch,
     SelectRegion,
+    CountryItem,
   },
 
   data() {
@@ -94,15 +85,6 @@ export default {
     filterByName() {
       this.countries = this.$store.getters.byName(this.search, this.region);
     },
-
-    goToCountryPage(id) {
-      this.$router.push({
-        name: "CountryPage",
-        params: {
-          id: id,
-        },
-      });
-    },
   },
 
   filters: {
@@ -129,32 +111,6 @@ export default {
   grid-template-columns: 1fr;
   row-gap: 3em;
   padding: 2em;
-  &__item {
-    box-shadow: 1px 2px 5px -2px var(--darkGray);
-    border-radius: 5px;
-    background: white;
-    cursor: pointer;
-
-    img {
-      max-width: 100%;
-      border-radius: 5px 5px 0 0;
-      height: 200px;
-      object-fit: cover;
-    }
-
-    .grid__content {
-      padding: 1em 2em 3.5em;
-      h3 {
-        margin: 0 0 1em 0;
-      }
-      p {
-        margin: 0.2em 0;
-        span {
-          font-weight: 600;
-        }
-      }
-    }
-  }
 }
 
 @media screen and (min-width: 1024px) {
@@ -173,13 +129,6 @@ export default {
     grid-template-columns: repeat(4, 1fr);
     column-gap: 75px;
     row-gap: 75px;
-    &__item {
-      img {
-        height: 160px;
-        width: 100%;
-        object-fit: cover;
-      }
-    }
   }
 }
 </style>

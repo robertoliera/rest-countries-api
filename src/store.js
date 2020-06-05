@@ -16,7 +16,7 @@ export default new Vuex.Store({
     fetchCountries({ commit }) {
       return new Promise((resolve, reject) => {
         fetch(
-          "https://restcountries.eu/rest/v2/all?fields=flag;name;nativeName;population;region;subregion;capital;topLevelDomain;currencies;languages;borders;alpha2Code"
+          "https://restcountries.eu/rest/v2/all?fields=flag;name;nativeName;population;region;subregion;capital;topLevelDomain;currencies;languages;borders;alpha2Code;alpha3Code"
         )
           .then((res) => {
             return res.json();

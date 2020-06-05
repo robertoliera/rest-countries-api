@@ -57,8 +57,8 @@ import Header from '@/components/Header';
           <div class="country__borders">
             <p class="title">Border Countries:</p>
             <div class="grid">
-              <button v-for="border in country.borders" :key="border">
-                {{ border }}
+              <button v-for="border in borders" :key="border">
+                {{ border.name }}
               </button>
             </div>
           </div>
@@ -78,6 +78,7 @@ export default {
   data() {
     return {
       country: {},
+      borders: [],
     };
   },
 
@@ -93,6 +94,17 @@ export default {
           return res.json();
         })
         .then((data) => {
+          let countries = this.$store.getters.listCountries;
+
+          //get names of countries based in alpha3code
+          data.borders.forEach((border) => {
+            countries.filter((country) => {
+              if (country.alpha3Code == border) {
+                this.borders.push(country);
+              }
+            });
+          });
+
           this.country = data;
         })
         .catch((err) => {
@@ -129,6 +141,7 @@ export default {
     margin-top: 2em;
     margin-bottom: 4em;
     border: 0;
+    cursor: pointer;
   }
   .icon-arrow-left {
     margin-right: 5px;
