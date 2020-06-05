@@ -217,7 +217,7 @@ export default {
 
     &__borders {
       .grid {
-        grid-template-columns: repeat(3, 100px);
+        grid-template-columns: repeat(3, 200px);
       }
     }
   }
