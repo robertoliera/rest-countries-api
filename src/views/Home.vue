@@ -86,13 +86,6 @@ export default {
       this.countries = this.$store.getters.byName(this.search, this.region);
     },
   },
-
-  filters: {
-    amount(value) {
-      let quantity = new Intl.NumberFormat().format(value);
-      return quantity;
-    },
-  },
 };
 </script>
 

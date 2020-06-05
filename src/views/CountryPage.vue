@@ -118,13 +118,6 @@ export default {
       });
     },
   },
-
-  filters: {
-    amount(value) {
-      let quantity = new Intl.NumberFormat().format(value);
-      return quantity;
-    },
-  },
 };
 </script>
 
