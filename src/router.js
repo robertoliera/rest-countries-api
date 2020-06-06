@@ -6,6 +6,14 @@ import CountryPage from "@/views/CountryPage";
 Vue.use(Router);
 
 export default new Router({
+  mode: "history",
+  scrollBehavior(to, from, savedPosition) {
+    if (savedPosition) {
+      return savedPosition;
+    } else {
+      return { x: 0, y: 0 };
+    }
+  },
   routes: [
     {
       path: "/",
@@ -17,10 +25,5 @@ export default new Router({
       name: "CountryPage",
       component: CountryPage,
     },
-    /* {
-      path: "/mi-cuenta/:id",
-      name: "account-user",
-      component: Account,
-    }, */
   ],
 });
