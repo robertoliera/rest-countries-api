@@ -35,7 +35,7 @@ import Header from '@/components/Header';
                 <span class="title">Currencies: </span>
                 <span
                   v-for="(currency, index) in country.currencies"
-                  :key="currency.code"
+                  :key="index"
                 >
                   {{ currency.name }}
                   <span v-if="index !== country.currencies.length - 1">,</span>
@@ -43,10 +43,7 @@ import Header from '@/components/Header';
               </p>
               <p>
                 <span class="title">Languages: </span>
-                <span
-                  v-for="(lang, index) in country.languages"
-                  :key="lang.name"
-                >
+                <span v-for="(lang, index) in country.languages" :key="index">
                   {{ lang.name
                   }}<span v-if="index !== country.languages.length - 1">,</span>
                 </span>
@@ -57,7 +54,7 @@ import Header from '@/components/Header';
           <div class="country__borders">
             <p class="title">Border Countries:</p>
             <div class="grid">
-              <button v-for="border in borders" :key="border">
+              <button v-for="(border, index) in borders" :key="index">
                 {{ border.name }}
               </button>
             </div>
