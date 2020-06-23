@@ -1,4 +1,3 @@
-import Header from '@/components/Header';
 <template>
   <div class="country">
     <HeaderBar></HeaderBar>
